@@ -1,0 +1,15 @@
+DIAPORAMA DES 80 ANS — MODE D'EMPLOI
+
+1. Copier tout le dossier « diaporama » sur le PC de la fête (clé USB ou autre). Ne rien renommer.
+2. Double-cliquer sur « index.html » : il s'ouvre dans le navigateur (Chrome, Edge ou Firefox).
+3. Appuyer sur F pour passer en plein écran. Le diaporama tourne en boucle, sans internet.
+
+Touches utiles
+  F          plein écran (Échap pour en sortir)
+  T          thème clair / thème sombre : choisir sur place celui qui se voit le mieux au vidéoprojecteur
+  L          afficher / masquer toutes les légendes
+  Espace     pause / reprise
+  ← et →     photo précédente / suivante
+
+À savoir : 127 photos, 9 secondes chacune, une boucle complète dure environ 20 minutes. Aucun son.
+Penser à désactiver la mise en veille et l'économiseur d'écran du PC avant le repas.

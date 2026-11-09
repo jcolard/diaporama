@@ -1,0 +1,98 @@
+<!doctype html><html lang="fr"><head><meta charset="utf-8"><title>80 ans — diaporama</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+@font-face{font-family:"Bodoni Moda";font-weight:500;src:url(fonts/bodoni-moda-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Bodoni Moda";font-weight:600;src:url(fonts/bodoni-moda-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Jost";font-weight:500;src:url(fonts/jost-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"EB Garamond";font-style:italic;src:url(fonts/eb-garamond-latin-400-italic.woff2) format("woff2")}
+@font-face{font-family:"Pinyon Script";src:url(fonts/pinyon-script-latin-400-normal.woff2) format("woff2")}
+:root{--papier:#fbf9f3;--encre:#2a2620;--vert-sapin:#2f4a3a;--sauge:#a9b79a;--or:#b8913a;--or-fonce:#7d5e1c;--brun:#5a3b24}
+body[data-theme=papier]{--fond:var(--papier);--texte:var(--vert-sapin);--date:var(--or-fonce);--voile:.80;--bord:#fff}
+body[data-theme=sapin]{--fond:var(--vert-sapin);--texte:var(--papier);--date:#e2c479;--voile:.72;--bord:var(--papier)}
+*{box-sizing:border-box} html,body{margin:0;height:100%;overflow:hidden;background:var(--fond);cursor:none}
+.vue{position:fixed;inset:0;opacity:0;transition:opacity 1.5s ease;display:flex;align-items:center;justify-content:center;gap:3.5vw;padding:4.5vh 4vw}
+.vue.on{opacity:1}
+.flou{position:absolute;inset:-6vh;background-size:cover;background-position:center;filter:blur(5vh)}
+.voile{position:absolute;inset:0;background:var(--fond);opacity:var(--voile)}
+.cadre{position:relative;line-height:0;border:.9vh solid var(--bord);outline:.28vh solid var(--or);box-shadow:0 1.2vh 4vh rgba(0,0,0,.28);animation:zoom 11s linear both}
+@keyframes zoom{from{transform:scale(1)}to{transform:scale(1.04)}}
+.cadre img{display:block;max-width:90vw;max-height:88vh}
+.texte{position:relative;color:var(--texte);text-align:center}
+.date{font-family:"Jost",sans-serif;font-weight:500;font-size:2.7vh;letter-spacing:.2em;text-transform:uppercase;color:var(--date)}
+.leg{font-family:"EB Garamond",Georgia,serif;font-style:italic;font-size:4.5vh;line-height:1.16;margin-top:.6vh;text-wrap:balance}
+.vue.p.t{flex-direction:row} .vue.p.t .cadre img{max-width:52vw} .vue.p.t .texte{max-width:31vw;text-align:left}
+.vue.p.t .date{font-size:3vh} .vue.p.t .leg{font-size:5.2vh;margin-top:1.5vh}
+.vue.p.t .texte::before{content:"";display:block;width:9vh;border-top:.35vh solid var(--or);margin-bottom:3vh}
+.vue.h.t{flex-direction:column;gap:2.4vh} .vue.h.t .cadre img{max-height:71vh} .vue.h.t .texte{max-width:88vw}
+body.sans-legende .texte{display:none} body.sans-legende .vue.h.t .cadre img{max-height:88vh}
+.titre{flex-direction:column;gap:0;color:var(--texte);text-align:center}
+.titre .sur{font-family:"Jost",sans-serif;font-weight:500;font-size:3.4vh;letter-spacing:.34em;color:var(--date)}
+.titre .n{font-family:"Bodoni Moda",serif;font-weight:500;font-size:50vh;line-height:.82;color:var(--or);margin-top:3vh}
+.titre .ans{font-family:"Jost",sans-serif;font-weight:500;font-size:3.6vh;letter-spacing:.44em;text-transform:uppercase;margin-top:3vh}
+.titre .p{font-family:"Pinyon Script",cursive;font-size:21vh;line-height:1}
+#aide{position:fixed;left:50%;bottom:3vh;transform:translateX(-50%);font-family:"Jost",sans-serif;font-size:2vh;letter-spacing:.08em;color:var(--texte);
+  background:var(--fond);padding:1vh 2.4vh;border:.2vh solid var(--or);opacity:.92;transition:opacity 1s;z-index:9}
+#aide.off{opacity:0}
+body.fige .vue{transition:none} body.fige .cadre{animation:none} body.fige #aide{display:none}
+</style></head><body data-theme="papier">
+<div id="aide">F : plein écran · T : thème clair / sombre · L : légendes · Espace : pause · ← → : précédente / suivante</div>
+<script>
+const PHOTOS = [{"f": "106.jpg", "d": "", "l": "Danielle habillée pour le mariage de Sandrine", "o": "p"}, {"f": "006.jpg", "d": "", "l": "Danielle à 1 an", "o": "p"}, {"f": "047.jpg", "d": "", "l": "", "o": "p"}, {"f": "072.jpg", "d": "1998", "l": "", "o": "p"}, {"f": "043.jpg", "d": "", "l": "", "o": "p"}, {"f": "021.jpg", "d": "", "l": "", "o": "p"}, {"f": "035.jpg", "d": "", "l": "", "o": "p"}, {"f": "083.jpg", "d": "2025", "l": "Pot de fin de séjour à Orbey", "o": "h"}, {"f": "065.jpg", "d": "", "l": "", "o": "p"}, {"f": "095.jpg", "d": "", "l": "", "o": "p"}, {"f": "020.jpg", "d": "", "l": "", "o": "p"}, {"f": "053.jpg", "d": "Septembre 2016", "l": "Rien ne nous faisait peur. Nous passions sous ou sur les barrières sans problème.", "o": "h"}, {"f": "127.jpg", "d": "Octobre 2025", "l": "Danielle bien entourée", "o": "h"}, {"f": "039.jpg", "d": "", "l": "", "o": "p"}, {"f": "077.jpg", "d": "1992", "l": "", "o": "h"}, {"f": "115.jpg", "d": "", "l": "Le mariage de Danielle et Antoine", "o": "h"}, {"f": "111.jpg", "d": "", "l": "Danielle portant Lilouane, et sa sœur Yvette", "o": "h"}, {"f": "107.jpg", "d": "", "l": "Danielle aux 70 ans de Nicole", "o": "p"}, {"f": "075.jpg", "d": "1988", "l": "", "o": "p"}, {"f": "004.jpg", "d": "", "l": "Le papa de Danielle", "o": "p"}, {"f": "085.jpg", "d": "", "l": "Randonnée à Pommiers", "o": "h"}, {"f": "049.jpg", "d": "", "l": "", "o": "h"}, {"f": "113.jpg", "d": "", "l": "Danielle et un de ses premiers chiens", "o": "p"}, {"f": "057.jpg", "d": "Cuba", "l": "Quatre pin-up en voyage", "o": "h"}, {"f": "129.jpg", "d": "Octobre 2025", "l": "Danielle et toute sa famille, sauf sa petite-fille", "o": "h"}, {"f": "081.jpg", "d": "", "l": "", "o": "h"}, {"f": "010.jpg", "d": "Photo d'école", "l": "Quatre des filles Vernus sont là : elles ont toutes la même robe !", "o": "h"}, {"f": "046.jpg", "d": "", "l": "", "o": "h"}, {"f": "093.jpg", "d": "", "l": "", "o": "p"}, {"f": "110.jpg", "d": "", "l": "", "o": "p"}, {"f": "089.jpg", "d": "", "l": "", "o": "p"}, {"f": "038.jpg", "d": "", "l": "", "o": "p"}, {"f": "054.jpg", "d": "", "l": "", "o": "h"}, {"f": "022.jpg", "d": "", "l": "", "o": "p"}, {"f": "103.jpg", "d": "", "l": "Mami rayonnante en randonnée", "o": "h"}, {"f": "069.jpg", "d": "1996", "l": "", "o": "h"}, {"f": "123.jpg", "d": "", "l": "Antoine et ses deux derniers petits-enfants à la pêche dans le grau de La Clayette", "o": "h"}, {"f": "007.jpg", "d": "Vers 1960", "l": "La famille devant la maison de Vareilles", "o": "p"}, {"f": "080.jpg", "d": "1991", "l": "", "o": "h"}, {"f": "040.jpg", "d": "", "l": "", "o": "p"}, {"f": "014.jpg", "d": "", "l": "", "o": "p"}, {"f": "064.jpg", "d": "Trekking dans les Pyrénées", "l": "Belle brochette de randonneurs un peu fatigués", "o": "h"}, {"f": "041.jpg", "d": "", "l": "", "o": "p"}, {"f": "073.jpg", "d": "1998", "l": "", "o": "h"}, {"f": "117.jpg", "d": "", "l": "Danielle devant sa maison d'enfance", "o": "h"}, {"f": "034.jpg", "d": "", "l": "", "o": "p"}, {"f": "030.jpg", "d": "", "l": "", "o": "p"}, {"f": "013.jpg", "d": "", "l": "", "o": "p"}, {"f": "076.jpg", "d": "1992", "l": "", "o": "p"}, {"f": "045.jpg", "d": "", "l": "", "o": "p"}, {"f": "002.jpg", "d": "", "l": "", "o": "h"}, {"f": "008.jpg", "d": "", "l": "", "o": "h"}, {"f": "122.jpg", "d": "Noël 2010", "l": "Danielle, son fils Fabien, sa belle-fille Myriam et Gabin", "o": "h"}, {"f": "116.jpg", "d": "Octobre 2025", "l": "Danielle, sa fille, son petit-fils Nicolas et son arrière-petite-fille Cassy", "o": "p"}, {"f": "114.jpg", "d": "", "l": "Danielle et Sandrine", "o": "h"}, {"f": "104.jpg", "d": "", "l": "", "o": "h"}, {"f": "082.jpg", "d": "", "l": "Randonnée à Crémieu", "o": "h"}, {"f": "031.jpg", "d": "", "l": "", "o": "p"}, {"f": "019.jpg", "d": "", "l": "", "o": "p"}, {"f": "061.jpg", "d": "Mexique, décembre 2018", "l": "Soirée arrosée et déguisée ! Surprenante, non ?", "o": "p"}, {"f": "033.jpg", "d": "", "l": "", "o": "p"}, {"f": "005.jpg", "d": "1947", "l": "Danielle", "o": "p"}, {"f": "078.jpg", "d": "1990", "l": "", "o": "h"}, {"f": "012.jpg", "d": "", "l": "", "o": "h"}, {"f": "042.jpg", "d": "", "l": "", "o": "h"}, {"f": "108.jpg", "d": "", "l": "", "o": "h"}, {"f": "086.jpg", "d": "", "l": "", "o": "p"}, {"f": "101.jpg", "d": "", "l": "", "o": "h"}, {"f": "066.jpg", "d": "", "l": "", "o": "h"}, {"f": "048.jpg", "d": "", "l": "", "o": "h"}, {"f": "028.jpg", "d": "", "l": "", "o": "p"}, {"f": "118.jpg", "d": "Été 2011", "l": "Danielle avec Gabin", "o": "p"}, {"f": "018.jpg", "d": "", "l": "", "o": "p"}, {"f": "044.jpg", "d": "", "l": "", "o": "p"}, {"f": "062.jpg", "d": "Mexique, Guatemala", "l": "Danielle se fond dans la foule, incognito", "o": "p"}, {"f": "024.jpg", "d": "", "l": "", "o": "p"}, {"f": "068.jpg", "d": "1996", "l": "", "o": "h"}, {"f": "090.jpg", "d": "", "l": "", "o": "p"}, {"f": "067.jpg", "d": "1977", "l": "", "o": "h"}, {"f": "011.jpg", "d": "", "l": "", "o": "h"}, {"f": "055.jpg", "d": "Vers 2016", "l": "Danielle en pleine escalade, à l'aube de ses 70 printemps", "o": "p"}, {"f": "098.jpg", "d": "", "l": "", "o": "h"}, {"f": "105.jpg", "d": "", "l": "Danielle portant sa fille, entourée de sa famille", "o": "h"}, {"f": "029.jpg", "d": "", "l": "", "o": "h"}, {"f": "084.jpg", "d": "2025", "l": "Octobre rose", "o": "h"}, {"f": "051.jpg", "d": "", "l": "", "o": "p"}, {"f": "091.jpg", "d": "", "l": "", "o": "h"}, {"f": "100.jpg", "d": "", "l": "", "o": "h"}, {"f": "070.jpg", "d": "1998", "l": "", "o": "h"}, {"f": "015.jpg", "d": "", "l": "", "o": "p"}, {"f": "079.jpg", "d": "1991", "l": "", "o": "h"}, {"f": "023.jpg", "d": "", "l": "", "o": "p"}, {"f": "099.jpg", "d": "", "l": "", "o": "p"}, {"f": "128.jpg", "d": "", "l": "", "o": "h"}, {"f": "059.jpg", "d": "", "l": "", "o": "p"}, {"f": "071.jpg", "d": "1997", "l": "", "o": "p"}, {"f": "060.jpg", "d": "Mexique, 2018", "l": "Autre escalade chez les Mayas. Il fait chaud et les marches n'en finissent pas.", "o": "h"}, {"f": "120.jpg", "d": "", "l": "Danielle (la plus grande) et ses sœurs", "o": "h"}, {"f": "037.jpg", "d": "", "l": "", "o": "h"}, {"f": "124.jpg", "d": "Août 2013", "l": "Mami et Gabin sur un trampoline", "o": "h"}, {"f": "025.jpg", "d": "", "l": "", "o": "p"}, {"f": "058.jpg", "d": "Cuba, 2015", "l": "Ils sont beaux tous les deux, n'est-ce pas ? Et dans une voiture américaine.", "o": "h"}, {"f": "094.jpg", "d": "", "l": "", "o": "p"}, {"f": "102.jpg", "d": "", "l": "Avec Monique et Papi", "o": "h"}, {"f": "119.jpg", "d": "", "l": "Danielle, trop belle en fait", "o": "p"}, {"f": "063.jpg", "d": "Trekking dans les Pyrénées", "l": "Petite sortie resto à Perpignan", "o": "h"}, {"f": "074.jpg", "d": "1985", "l": "", "o": "h"}, {"f": "017.jpg", "d": "", "l": "", "o": "p"}, {"f": "032.jpg", "d": "", "l": "", "o": "h"}, {"f": "097.jpg", "d": "", "l": "", "o": "h"}, {"f": "126.jpg", "d": "", "l": "Les trois petits-enfants de Danielle", "o": "h"}, {"f": "112.jpg", "d": "", "l": "Danielle, encore trop belle", "o": "h"}, {"f": "092.jpg", "d": "", "l": "", "o": "p"}, {"f": "056.jpg", "d": "", "l": "", "o": "h"}, {"f": "003.jpg", "d": "Vers 1930", "l": "La maman de Danielle", "o": "p"}, {"f": "087.jpg", "d": "", "l": "", "o": "p"}, {"f": "027.jpg", "d": "", "l": "", "o": "p"}, {"f": "096.jpg", "d": "", "l": "", "o": "p"}, {"f": "121.jpg", "d": "", "l": "Danielle (à droite), ses frères et sœurs, ses parents et sa grand-mère", "o": "p"}, {"f": "026.jpg", "d": "", "l": "", "o": "h"}, {"f": "050.jpg", "d": "", "l": "", "o": "p"}, {"f": "009.jpg", "d": "", "l": "L'école de laborantines", "o": "h"}, {"f": "088.jpg", "d": "", "l": "", "o": "p"}, {"f": "109.jpg", "d": "", "l": "", "o": "h"}, {"f": "036.jpg", "d": "", "l": "", "o": "h"}, {"f": "016.jpg", "d": "", "l": "", "o": "h"}, {"f": "125.jpg", "d": "", "l": "Danielle et sa famille", "o": "h"}];
+const DUREE = 9000, DUREE_TITRE = 6000, TOUS_LES = 20;
+const q = new URLSearchParams(location.search);
+let sequence = [];
+PHOTOS.forEach((p, k) => { if (k % TOUS_LES === 0) sequence.push(null); sequence.push(p); });
+let i = q.has("i") ? +q.get("i") : 0, pause = q.has("fige"), minuterie = null, courante = null;
+if (q.get("theme")) document.body.dataset.theme = q.get("theme");
+if (q.has("fige")) document.body.classList.add("fige");   // ?i=12&fige=1 : affiche une vue fixe (contrôle)
+function vue(p) {
+  const v = document.createElement("div");
+  if (!p) { v.className = "vue titre"; v.innerHTML = '<div class="sur">1946 · 2026</div><div class="n">80</div><div class="ans">ans de</div><div class="p">Danielle</div>'; return v; }
+  const t = p.d || p.l;
+  v.className = "vue " + (p.o === "p" ? "p" : "h") + (t ? " t" : "");
+  const src = "photos/" + p.f;
+  v.innerHTML = '<div class="flou" style="background-image:url(' + src + ')"></div><div class="voile"></div><div class="cadre"><img src="' + src + '" alt=""></div>'
+    + (t ? '<div class="texte">' + (p.d ? '<div class="date"></div>' : '') + (p.l ? '<div class="leg"></div>' : '') + '</div>' : '');
+  if (p.d) v.querySelector(".date").textContent = p.d;
+  if (p.l) v.querySelector(".leg").textContent = p.l;
+  return v;
+}
+function montrer(k) {
+  i = (k + sequence.length) % sequence.length;
+  const p = sequence[i], v = vue(p), ancienne = courante;
+  document.body.appendChild(v); courante = v;
+  const afficher = () => { requestAnimationFrame(() => v.classList.add("on")); if (ancienne) { ancienne.classList.remove("on"); setTimeout(() => ancienne.remove(), 1700); } };
+  const img = v.querySelector("img");
+  if (img && !img.complete) { img.onload = afficher; img.onerror = () => { v.remove(); courante = ancienne; montrer(i + 1); }; } else afficher();
+  const suivante = sequence[(i + 1) % sequence.length]; if (suivante) new Image().src = "photos/" + suivante.f;   // préchargement
+  clearTimeout(minuterie); if (!pause) minuterie = setTimeout(() => montrer(i + 1), p ? DUREE : DUREE_TITRE);
+}
+addEventListener("keydown", e => {
+  const k = e.key.toLowerCase();
+  if (k === "t") document.body.dataset.theme = document.body.dataset.theme === "papier" ? "sapin" : "papier";
+  else if (k === "l") document.body.classList.toggle("sans-legende");
+  else if (k === "f") { document.fullscreenElement ? document.exitFullscreen() : document.documentElement.requestFullscreen(); }
+  else if (k === " ") { pause = !pause; e.preventDefault(); if (pause) clearTimeout(minuterie); else montrer(i + 1); }
+  else if (k === "arrowright" || k === "pagedown") montrer(i + 1);
+  else if (k === "arrowleft" || k === "pageup") montrer(i - 1);
+});
+let touchStartX = 0, touchStartY = 0;
+addEventListener("touchstart", e => {
+  if (e.changedTouches && e.changedTouches[0]) {
+    touchStartX = e.changedTouches[0].clientX;
+    touchStartY = e.changedTouches[0].clientY;
+  }
+}, { passive: true });
+addEventListener("touchend", e => {
+  if (e.changedTouches && e.changedTouches[0]) {
+    const dx = e.changedTouches[0].clientX - touchStartX;
+    const dy = e.changedTouches[0].clientY - touchStartY;
+    if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) {
+      if (dx < 0) montrer(i + 1);
+      else montrer(i - 1);
+    }
+  }
+}, { passive: true });
+setTimeout(() => document.getElementById("aide").classList.add("off"), q.has("fige") ? 0 : 12000);
+montrer(i);
+</script></body></html>
